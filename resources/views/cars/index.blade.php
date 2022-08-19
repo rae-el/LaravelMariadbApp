@@ -32,9 +32,9 @@
                             </td>
                             <td>
                                 <!-- buttons need some help -->
-                                <button class="rounded py-4 px-8 mr-4 w-1/12 w-20 bg-green-200">Details</button>
-                                <button class="rounded py-4 px-8 mr-4 w-1/12 w-20 bg-blue-200">Edit</button>
-                                <button class="rounded py-4 px-8 mr-4 w-1/12 w-20 bg-red-200">Delete</button>
+                                <a class="ded-btn" href="">Details</a>
+                                <a class="ded-btn" href="">Edit</a>
+                                <a class="ded-btn" href="">Delete</a>
                             </td>
                         </tr>
                     @empty
@@ -45,7 +45,9 @@
                     </tbody>
                     <tfoot class="bg-gray-800 text-gray-100">
                     <tr>
-                        <td class="col-auto px-4 py-2"></td>
+                        <td class="col-auto px-4 py-2">
+                            <h2><a class="ded-btn" href="{{route('cars.add')}}">Add another car!</a></h2>
+                        </td>
                     </tr>
                     </tfoot>
                 </table>

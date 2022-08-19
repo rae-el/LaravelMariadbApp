@@ -26,9 +26,11 @@ class CarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function add()
     {
         //
+        $cars = Car::all();
+        return view('cars.add',['cars'=> $cars]);
     }
 
     /**

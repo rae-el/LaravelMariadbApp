@@ -22,6 +22,9 @@ Route::get('/', [\App\Http\Controllers\HomeController::class,'index'])
 Route::get('/cars', [\App\Http\Controllers\CarController::class,'index'])
     ->name('cars.index');
 
+Route::get('/cars/add', [\App\Http\Controllers\CarController::class,'add'])
+    ->name('cars.add');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
