@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
+        //gather data needed for home page
 
         $cars = Car::all();
         $carCount = count($cars);
