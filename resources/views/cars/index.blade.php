@@ -32,7 +32,7 @@
                             </td>
                             <td>
                                 <!-- buttons need some help -->
-                                <a class="ded-btn" href="">Details</a>
+                                <a class="ded-btn" href="{{route('cars.details',$car->id)}}">Details</a>
                                 <a class="ded-btn" href="">Edit</a>
                                 <a class="ded-btn" href="">Delete</a>
                             </td>
