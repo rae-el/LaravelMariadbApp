@@ -28,7 +28,7 @@ Route::post('/cars/store', [\App\Http\Controllers\CarController::class,'store'])
     ->name('cars.store');
 Route::get('/cars/edit', [\App\Http\Controllers\CarController::class,'edit'])
     ->name('cars.edit');
-Route::get('/cars/details', [\App\Http\Controllers\CarController::class,'show'])
+Route::get('/cars/{car}/details', [\App\Http\Controllers\CarController::class,'show'])
     ->name('cars.details');
 Route::get('/cars/delete', [\App\Http\Controllers\CarController::class,'destroy'])
     ->name('cars.delete');
