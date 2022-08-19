@@ -24,6 +24,8 @@ Route::get('/cars', [\App\Http\Controllers\CarController::class,'index'])
 
 Route::get('/cars/add', [\App\Http\Controllers\CarController::class,'add'])
     ->name('cars.add');
+Route::post('/cars/store', [\App\Http\Controllers\CarController::class,'store'])
+    ->name('cars.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -17,7 +17,10 @@ class CarController extends Controller
     {
         //
         $cars = Car::all();
-        return view('cars.index',['cars'=> $cars]);
+        //if wanted to paginate
+        //$cars = Car::paginate(#);
+        //return view('cars.index',['cars'=> $cars]);
+        return view('cars.index',compact(['cars']));
 
     }
 
@@ -30,7 +33,8 @@ class CarController extends Controller
     {
         //
         $cars = Car::all();
-        return view('cars.add',['cars'=> $cars]);
+        return view('cars.add',compact(['cars']));
+
     }
 
     /**
@@ -41,7 +45,17 @@ class CarController extends Controller
      */
     public function store(StoreCarRequest $request)
     {
-        //
+        //validate data in StoreCarRequest
+        $newCar =[
+            'code' => $request->code,
+            'manufacturer' => $request -> manufacturer,
+            'model' => $request -> model,
+            'price' => $request -> price,
+        ];
+        Car::create($newCar);
+
+        //tell the user they added a car successfully
+        return redirect()->route('cars.index')->with('success','car successfully added');
     }
 
     /**
