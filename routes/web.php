@@ -38,8 +38,10 @@ Route::group(['middleware' => ['auth']], function (){
         ->name('cars.edit');
     Route::put('/cars/{car}/update', [\App\Http\Controllers\CarController::class,'update'])
         ->name('cars.update');
-    Route::get('/cars/delete', [\App\Http\Controllers\CarController::class,'destroy'])
+    Route::get('/cars/{car}/delete', [\App\Http\Controllers\CarController::class,'delete'])
         ->name('cars.delete');
+    Route::delete('/cars/{car}/destroy',[\App\Http\Controllers\CarController::class,'destroy'])
+        ->name('cars.destroy');
 });
 
 Route::get('/dashboard', function () {

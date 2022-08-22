@@ -73,7 +73,9 @@
                 <button type="submit" name="save" class="rounded py-4 px-8 mr-4 w-1/12 w-20 bg-green-200">
                     Save
                 </button>
-
+                <a href="{{route('cars.delete')}}" class="rounded py-4 w-1/12 w-20 bg-red-200 text-center">
+                    Delete
+                </a>
                 <a href="{{route('cars.index')}}" class="rounded py-4 w-1/12 w-20 bg-red-200 text-center">
                     Cancel
                 </a>

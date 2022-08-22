@@ -32,9 +32,9 @@
                             </td>
                             <td>
                                 <!-- buttons need some help -->
-                                <a class="ded-btn" href="{{route('cars.show',$car->id)}}">Details</a>
-                                <a class="ded-btn" href="{{route('cars.edit',$car->id)}}">Edit</a>
-                                <a class="ded-btn" href="">Delete</a>
+                                <a class="ded-btn" href="{{ route('cars.show',$car->id) }}">Details</a>
+                                <a class="ded-btn" href="{{ route('cars.edit',$car->id) }}">Edit</a>
+                                <a class="ded-btn" href="{{ route('cars.delete',$car->id) }}">Delete</a>
                             </td>
                         </tr>
                     @empty

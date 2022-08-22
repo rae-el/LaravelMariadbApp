@@ -104,6 +104,18 @@ class CarController extends Controller
     }
 
     /**
+     * Show the resource desired to remove from storage.
+     *
+     * @param \App\Models\Car $car
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function delete(Car $car)
+    {
+        //
+        return view("cars.delete", compact(['car']));
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Car  $car
@@ -112,5 +124,10 @@ class CarController extends Controller
     public function destroy(Car $car)
     {
         //
+        $car->delete();
+
+        //tell the user they deleted a car successfully
+        return redirect()->route('cars.index')->with('success','car successfully deleted');
+
     }
 }
