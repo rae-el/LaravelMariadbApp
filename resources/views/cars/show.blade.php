@@ -3,13 +3,13 @@
 <!--header-->
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <h1>{{__('Cars')}}</h1>
+                    <h1>Car {{$car->code}} Details</h1>
                 </div>
                 <!--body-->
                 <table class="table w-full">
                     <thead class=" bg-gray-800 text-gray-100">
                     <tr>
-                        <h2>{{__('Car Details')}}</h2>
+                        <h2>{{ __('Car Details')}}</h2>
                     </tr>
                     <tr class="columns-2">
                         <th class="col-auto px-4 py-2 text-left">Code</th>
@@ -30,14 +30,14 @@
                             <span class="text-black-500">{{$car->model}}</span>
                         </td>
                         <td class="col-auto px-4 py-2">
-                            <span class="text-black-500">{{$car->price}}</span>
+                            <span class="text-black-500">${{$car->price}}.00</span>
                         </td>
                     </tr>
                     </tbody>
                     <tfoot class="bg-gray-800 text-gray-100">
                     <tr>
                         <td class="col-auto px-4 py-2">
-                            <h3><a class="ded-btn" href="{{route('cars.edit')}}">Edit</a></h3>
+                            <h3><a class="ded-btn" href="{{route('cars.edit',$car->id)}}">Edit</a></h3>
                         </td>
                         <td class="col-auto px-4 py-2">
                             <h3><a class="ded-btn" href="">Delete</a></h3>

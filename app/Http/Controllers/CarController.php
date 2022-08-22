@@ -66,7 +66,8 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        return view("cars.details", compact(['car']));
+        //need to pull collectors data
+        return view("cars.show", compact(['car']));
     }
 
     /**
@@ -89,13 +90,15 @@ class CarController extends Controller
      */
     public function update(UpdateCarRequest $request, Car $car)
     {
+        echo "entered update";
         // validation in StoreCarRequest
-        $car -> code = $request -> code;
-        $car -> manufacturer = $request -> manufacturer;
-        $car -> model = $request -> model;
-        $car -> price = $request -> price;
-        $car->update();
-        ddd($car);
+        $car -> update([
+            'code'=> $request ->code,
+            'manufacturer' => $request ->manufacturer,
+            'model' => $request ->model,
+            'price' => $request ->price,
+        ]);
+
         //tell the user they added a car successfully
         return redirect()->route('cars.index')->with('success','car successfully updated');
     }

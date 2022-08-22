@@ -1,29 +1,83 @@
-index.blade.php@extends('layouts.mylayout')
+@extends('layouts.mylayout')
 @section('content')
-<!--header-->
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <h1>Cars</h1>
-                </div>
-                <!--body-->
-                <table class="table w-full">
-                    <thead class=" bg-gray-800 text-gray-100">
-                    <tr class="columns-2">
-                        <th class="col-auto px-4 py-2 text-left">Code</th>
-                        <th class="col-auto px-4 py-2">Manufacturer</th>
-                        <th class="col-auto px-4 py-2">Model</th>
-                        <th class="col-auto px-4 py-2">Price (AUD)</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+    <!--header-->
+    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+        <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
+            <h1>Edit Car {{$car->code}}</h1>
+        </div>
+        <!--body-->
+        <form action="{{ route('cars.update', $car) }}" method="post">
+            @method('PUT')
+            @csrf
+            <div class="pb-4 flex">
+                <label for="code" class="flex mr-4 w-1/12 w-20">
+                    Code
+                </label>
+                <input type="text"
+                       id="code"
+                       name="code"
+                       class="flex-1"
+                       value="{{$car->code}}"
+                       @error('code') text-red-500 @enderror
+                />
+            </div>
+            @error('code')
+            <p class="m-0 p-0 mt-1 ml-32 italic text-red-500">
+                The code is required
+            </p>
+            @enderror
+            <div class="pb-4 flex">
+                <label for="manufacturer" class="flex mr-4 w-1/12 w-20">
+                    Manufacturer
+                </label>
+                <input type="text" id="manufacturer" name="manufacturer" class="flex-1"
+                       value="{{$car->manufacturer}}"
+                       @error('manufacturer') text-red-500 @enderror
+                />
+            </div>
+            @error('manufacturer')
+            <p class="m-0 p-0 mt-1 ml-32 italic text-red-500">
+                The manufacturer is required
+            </p>
+            @enderror
+            <div class="pb-4 flex">
+                <label for="model" class="flex mr-4 w-1/12 w-20">
+                    Model
+                </label>
+                <input type="text" id="model" name="model" class="flex-1"
+                       value="{{$car->model}}"
+                       @error('model') text-red-500 @enderror
+                />
+            </div>
+            @error('model')
+            <p class="m-0 p-0 mt-1 ml-32 italic text-red-500">
+                The model is required
+            </p>
+            @enderror
+            <div class="pb-4 flex">
+                <label for="price" class="flex mr-4 w-1/12 w-20">
+                    Price
+                </label>
+                <input type="number" id="price" name="price" class="flex-1"
+                       value="{{$car->price}}"
+                       @error('price') text-red-500 @enderror
+                />
+            </div>
+            @error('price')
+            <p class="m-0 p-0 mt-1 ml-32 italic text-red-500">
+                The price must be a number
+            </p>
+            @enderror
+            <div class="pb-4 flex gap-4">
+                <span class="py-4 w-1/12 w-20"></span>
+                <button type="submit" name="save" class="rounded py-4 px-8 mr-4 w-1/12 w-20 bg-green-200">
+                    Save
+                </button>
 
-                    </tbody>
-                    <tfoot class="bg-gray-800 text-gray-100">
-                    <tr>
-                        <td class="col-auto px-4 py-2">
-                            <h2><a class="ded-btn" href="{{route('cars.add')}}">Add another car!</a></h2>
-                        </td>
-                    </tr>
-                    </tfoot>
-                </table>
+                <a href="{{route('cars.index')}}" class="rounded py-4 w-1/12 w-20 bg-red-200 text-center">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
 @endsection('content')
