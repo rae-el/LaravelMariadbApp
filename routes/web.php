@@ -21,9 +21,7 @@ Route::get('/', [\App\Http\Controllers\HomeController::class,'index'])
     ->name('welcome');
 
 //cars
-//if details was show it couldve been 1 line
 //Route::resource('cars', CarController::class);
-
 Route::get('/cars', [\App\Http\Controllers\CarController::class,'index'])
     ->name('cars.index');
 Route::get('/cars/{car}/show', [\App\Http\Controllers\CarController::class,'show'])

@@ -46,7 +46,7 @@
                     <tfoot class="bg-gray-800 text-gray-100">
                     <tr>
                         <td class="col-auto px-4 py-2">
-                            <h2><a class="ded-btn" href="{{route('cars.add')}}">Add another car!</a></h2>
+                            <h2><a class="ded-btn" href="{{ route('cars.add') }}">Add another car!</a></h2>
                         </td>
                     </tr>
                     </tfoot>

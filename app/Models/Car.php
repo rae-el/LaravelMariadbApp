@@ -36,4 +36,8 @@ class Car extends Model
      * @var array<string, string>
      */
     protected $casts = [];
+
+    public function car(){
+        return $this -> belongsToMany(Collector::class);
+    }
 }

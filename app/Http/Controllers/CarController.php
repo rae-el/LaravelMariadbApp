@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCarRequest;
 use App\Http\Requests\UpdateCarRequest;
 use App\Models\Car;
+use App\Models\Collector;
 
 class CarController extends Controller
 {
@@ -66,8 +67,19 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
+        $currentCollectors = [];
+        $collectors = Collector::all();
+        foreach ($collectors as $collector){
+            $collectorCars = $collector -> cars;
+            foreach ($collectorCars as $collectorCar){
+                if ($collectorCar == $car-> code){
+                    $collectorName = $collector -> given_name . " " . $collector -> family_name;
+                    array_push($currentCollectors,$collectorName);
+                }
+            }
+        }
         //need to pull collectors data
-        return view("cars.show", compact(['car']));
+        return view("cars.show",['car'=>$car, 'currentCollectors'=>$currentCollectors]);
     }
 
     /**

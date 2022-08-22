@@ -40,6 +40,9 @@
                             <h3><a class="ded-btn" href="{{ route('cars.index') }}">Cancel</a></h3>
                         </td>
                         <td class="col-auto px-4 py-2">
+                            <h3><a class="ded-btn" href="{{route('cars.edit',$car->id)}}">Edit</a></h3>
+                        </td>
+                        <td class="col-auto px-4 py-2">
                             <form method="POST" action="{{ route('cars.destroy', $car) }}">
                                 @csrf
                                 @method('DELETE')
