@@ -5,6 +5,20 @@
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                     <h1>Cars</h1>
                 </div>
+                <h3><a class="ded-btn" href="{{ route('cars.add') }}">Click here to add another car</a></h3>
+                <form method="post" action="" name="seach">
+                    @method('GET')
+                    @csrf
+                    <div class="pb-4 flex">
+                        <label for="manufacturer" class="flex mr-4 w-1/12 w-20">
+                            Search for a manufacturer:
+                        </label>
+                        <input type="text" id="manufacturer" name="manufacturer" class="flex-1"
+                               value=""
+                               @error('manufacturer') text-red-500 @enderror
+                        />
+                    </div>
+                </form>
                 <!--body-->
                 <table class="table w-full">
                     <thead class=" bg-gray-800 text-gray-100">
@@ -46,7 +60,6 @@
                     <tfoot class="bg-gray-800 text-gray-100">
                     <tr>
                         <td class="col-auto px-4 py-2">
-                            <h2><a class="ded-btn" href="{{ route('cars.add') }}">Add another car!</a></h2>
                         </td>
                     </tr>
                     </tfoot>

@@ -33,12 +33,13 @@
                         <td class="col-auto px-4 py-2">
                             <span class="text-black-500">${{$car->price}}.00</span>
                         </td>
-                        @forelse($currentCollectors as $currentCollector)
                         <td class="col-auto px-4 py-2">
-                            <span class="text-black-500">{{$currentCollector}},</span>
-                        </td>
+                            <span class="text-black-500">
+                        @forelse($currentCollectors as $currentCollector)
+                            {{$currentCollector}},
                         @empty
-                            <span class="text-black-500">no current collectors</span>
+                            no current collectors
+                        </span></td>
                         @endforelse
                     </tr>
                     </tbody>

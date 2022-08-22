@@ -67,6 +67,7 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
+        //my relationship is not working so I will do a long way, I know this is not ideal
         $currentCollectors = [];
         $collectors = Collector::all();
         foreach ($collectors as $collector){
@@ -78,7 +79,6 @@ class CarController extends Controller
                 }
             }
         }
-        //need to pull collectors data
         return view("cars.show",['car'=>$car, 'currentCollectors'=>$currentCollectors]);
     }
 
