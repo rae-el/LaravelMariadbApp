@@ -2,8 +2,8 @@
 @section('content')
 <!--header-->
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <h1>Add a Car</h1>
+                <div class="px-2 py-4 text-gray-700 text-xl">
+                    <h1>Add a new car</h1>
                 </div>
                 <!--body-->
                 <form action="{{route('cars.store')}}" method="post">

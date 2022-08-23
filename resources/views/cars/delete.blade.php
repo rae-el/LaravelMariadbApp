@@ -2,14 +2,13 @@
 @section('content')
 <!--header-->
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <h1>{{$car->code}}</h1>
-                </div>
                 <!--body-->
                 <table class="table w-full">
                     <thead class=" bg-gray-800 text-gray-100">
                     <tr>
-                        <h2>{{ __('Delete Car')}}</h2>
+                        <h3 class=" px-2 py-4 bg-gray-800 text-gray-100 text-xl">
+                            DELETE {{$car->code}}
+                        </h3>
                     </tr>
                     <tr class="columns-2">
                         <th class="col-auto px-4 py-2 text-left">Code</th>
@@ -34,19 +33,19 @@
                         </td>
                     </tr>
                     </tbody>
-                    <tfoot class="bg-gray-800 text-gray-100">
+                    <tfoot class="text-gray-600">
                     <tr>
                         <td class="col-auto px-4 py-2">
-                            <h3><a class="ded-btn" href="{{ route('cars.index') }}">Cancel</a></h3>
+                            <h3><a class="rounded py-1 px-1 mr-1 w-1/12 w-10 bg-blue-200" href="{{ route('cars.index') }}">Cancel</a></h3>
                         </td>
                         <td class="col-auto px-4 py-2">
-                            <h3><a class="ded-btn" href="{{route('cars.edit',$car->id)}}">Edit</a></h3>
+                            <h3><a class="rounded py-1 px-1 mr-1 w-1/12 w-10 bg-green-200" href="{{route('cars.edit',$car->id)}}">Edit</a></h3>
                         </td>
                         <td class="col-auto px-4 py-2">
                             <form method="POST" action="{{ route('cars.destroy', $car) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" name="destroy">Delete</button>
+                                <button type="submit" name="destroy" class="rounded py-1 px-1 ml-3 bg-red-200">Delete</button>
                             </form>
                         </td>
                     </tr>
