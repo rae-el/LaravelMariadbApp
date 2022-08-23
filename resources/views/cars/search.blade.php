@@ -24,7 +24,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @forelse ($cars as $car)
+                    @forelse ($results as $car)
                         <tr class="even:bg-gray-100 border-gray-300 border border-bottom border-l-0 border-r-0 hover:bg-neutral-300">
                             <td class="col-auto px-4 py-2">
                                 <span class="text-black-500">{{ $car->code }}</span>
@@ -47,7 +47,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="2" class="col-auto px-4 py-2">No cars today, sorry</td>
+                            <td colspan="2" class="col-auto px-4 py-2">No cars found, please try again</td>
                         </tr>
                     @endforelse
                     </tbody>

@@ -24,6 +24,8 @@ Route::get('/', [\App\Http\Controllers\HomeController::class,'index'])
 //Route::resource('cars', CarController::class);
 Route::get('/cars', [\App\Http\Controllers\CarController::class,'index'])
     ->name('cars.index');
+Route::get('/cars/search', [\App\Http\Controllers\SearchController::class,'search'])
+    ->name('cars.search');
 Route::get('/cars/{car}/show', [\App\Http\Controllers\CarController::class,'show'])
     ->name('cars.show');
 
