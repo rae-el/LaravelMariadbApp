@@ -6,6 +6,8 @@ use App\Http\Requests\StoreCarRequest;
 use App\Http\Requests\UpdateCarRequest;
 use App\Models\Car;
 use App\Models\Collector;
+use Debugbar;
+
 
 class CarController extends Controller
 {
@@ -102,7 +104,7 @@ class CarController extends Controller
      */
     public function update(UpdateCarRequest $request, Car $car)
     {
-        echo "entered update";
+        Debugbar::addMessage("info","entered update car");
         // validation in StoreCarRequest
         $car -> update([
             'code'=> $request ->code,

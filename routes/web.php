@@ -21,15 +21,22 @@ Route::get('/', [\App\Http\Controllers\HomeController::class,'index'])
     ->name('welcome');
 
 //cars
-//Route::resource('cars', CarController::class);
 Route::get('/cars', [\App\Http\Controllers\CarController::class,'index'])
     ->name('cars.index');
 Route::get('/cars/search', [\App\Http\Controllers\SearchController::class,'search'])
     ->name('cars.search');
 Route::get('/cars/{car}/show', [\App\Http\Controllers\CarController::class,'show'])
     ->name('cars.show');
+//collectors
+Route::get('/collectors', [\App\Http\Controllers\CollectorController::class,'index'])
+    ->name('collectors.index');
+Route::get('/collectors/search', [\App\Http\Controllers\CollectorController::class,'search'])
+    ->name('collectors.search');
+Route::get('/collectors/{car}/show', [\App\Http\Controllers\CollectorController::class,'show'])
+    ->name('collectors.show');
 
 Route::group(['middleware' => ['auth']], function (){
+    //cars
     Route::get('/cars/add', [\App\Http\Controllers\CarController::class,'add'])
         ->name('cars.add');
     Route::post('/cars/store', [\App\Http\Controllers\CarController::class,'store'])
@@ -42,6 +49,19 @@ Route::group(['middleware' => ['auth']], function (){
         ->name('cars.delete');
     Route::delete('/cars/{car}/destroy',[\App\Http\Controllers\CarController::class,'destroy'])
         ->name('cars.destroy');
+    //collectors
+    Route::get('/collectors/add', [\App\Http\Controllers\collectorController::class,'add'])
+        ->name('collectors.add');
+    Route::post('/collectors/store', [\App\Http\Controllers\collectorController::class,'store'])
+        ->name('collectors.store');
+    Route::get('/collectors/{collector}/edit', [\App\Http\Controllers\collectorController::class,'edit'])
+        ->name('collectors.edit');
+    Route::put('/collectors/{collector}/update', [\App\Http\Controllers\collectorController::class,'update'])
+        ->name('collectors.update');
+    Route::get('/collectors/{collector}/delete', [\App\Http\Controllers\collectorController::class,'delete'])
+        ->name('collectors.delete');
+    Route::delete('/collectors/{collector}/destroy',[\App\Http\Controllers\collectorController::class,'destroy'])
+        ->name('collectors.destroy');
 });
 
 Route::get('/dashboard', function () {

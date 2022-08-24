@@ -13,7 +13,7 @@ class StoreCollectorRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->user();
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreCollectorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            //validation rules
+            'given_name'=> ['min:1','max:20','required'],
+            'family_name'=> ['min:1','max:20','required'],
+            'cars'=> [],
         ];
     }
 }
