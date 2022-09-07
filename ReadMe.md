@@ -1,3 +1,11 @@
+https://heroku-laravel-mariadb-app.herokuapp.com/
+DB_CONNECTION=mysql
+DB_HOST=mariadb
+DB_PORT=3306
+DB_DATABASE=laravel_mariadb_app
+DB_USERNAME=sail
+DB_PASSWORD=password
+
 CAR DATA
 Code	Manufacturer	Model	Price
 MOGAN-44	Morgan	4/4	107000.00
