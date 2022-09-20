@@ -11,55 +11,57 @@ class CarAPIController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * @return \Illuminate\Http\Response
      *
      */
     public function index()
     {
         //
         $cars = Car::all();
-        //if wanted to paginate
-        //$cars = Car::paginate(#);
-        //return view('cars.index',['cars'=> $cars]);
-        return response()->json($cars);
+        //return response()->json($cars);
+        return response('RETURNED: '.$cars,200);
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     */
-    public function add()
-    {
-        //
-
-    }
 
     /**
      * Store a newly created resource in storage.
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
      *
      */
     public function store(StoreCarRequest $request)
     {
         //validate data in StoreCarRequest
+        /*
         $car = new Car;
         $car->code = $request->code;
         $car->manufacturer = $request->manufacturer;
         $car->model = $request->model;
         $car->price = $request->price;
         $car->save();
-
         return response()->json([
             "message" => "Car Added"
-        ], 201);
+        ], 201);*/
+        $car = new Car;
+        $car->code = $request->code;
+        $car->manufacturer = $request->manufacturer;
+        $car->model = $request->model;
+        $car->price = $request->price;
+
+        $car = Car::create($car);
+        return response('Added: '.$car,201);
+
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Car $car
      */
-    public function show(Car $car)
+    public function show($id)
     {
+        $car = Car::find($id);
         if (!empty($car)) {
             return response()->json($car);
         } else {
@@ -70,23 +72,12 @@ class CarAPIController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     */
-    public function edit(Car $car)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param \App\Http\Requests\UpdateCarRequest $request
-     * @param \App\Models\Car $car
      */
-    public function update(UpdateCarRequest $request, Car $car)
+    public function update(UpdateCarRequest $request, $id)
     {
-        $id = $car->id;
         // validation in StoreCarRequest
         if (Car::where('id', $id)->exists()) {
             $car = Car::find($id);
@@ -107,24 +98,12 @@ class CarAPIController extends Controller
     }
 
     /**
-     * Show the resource desired to remove from storage.
-     *
-     * @param \App\Models\Car $car
-     */
-    public function delete(Car $car)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param \App\Models\Car $car
      */
-    public function destroy(Car $car)
+    public function destroy($id)
     {
-        //
-        $id = $car->id;
         // validation in StoreCarRequest
         if (Car::where('id', $id)->exists()) {
             $car = Car::find($id);

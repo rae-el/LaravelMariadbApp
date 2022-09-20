@@ -19,10 +19,14 @@ use App\Http\Controllers\API\CarAPIController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::group(['middleware' => ['auth:sanctum']], function (){
-    Route::get('/cars',[CarAPIController::class, 'index'])->name('cars.index');
-    Route::get('/cars/{car}/show',[CarAPIController::class, 'show'])->name('cars.show');
-    Route::post('/cars/store',[CarAPIController::class, 'store'])->name('cars.store');
-    Route::put('/cars/{car}/update',[CarAPIController::class, 'update'])->name('cars.update');
-    Route::delete('/cars/{car}/destroy',[CarAPIController::class, 'destroy'])->name('cars.destroy');
-});
+/*Route::group(['middleware' => ['auth:sanctum']], function (){
+    Route::get('/api/cars',[CarAPIController::class, 'index']);
+    Route::get('/api/cars/{car}/show',[CarAPIController::class, 'show']);
+    Route::post('/api/cars/store',[CarAPIController::class, 'store']);
+    Route::put('/api/cars/{car}/update',[CarAPIController::class, 'update']);
+    Route::delete('/api/cars/{car}/destroy',[CarAPIController::class, 'destroy']);
+});*/
+
+
+Route::resource('cars','App\Http\Controllers\API\CarAPIController');
+
